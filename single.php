@@ -19,12 +19,15 @@ get_header();
      <p><strong>Publié le :</strong><?php the_time('d/m/Y'); ?><?php if(!is_page()) : ?> dans <?php the_category(', '); ?><?php endif; ?></p>
      
                    <?php the_content(); ?>
-                   <?php if(is_singular()) : if(comments_open()) : comments_template(); endif; endif; ?>
+         
 </article>
+<hr>
+                   <?php if(is_singular() or is_page()) : if(comments_open()) : comments_template(); endif; endif; ?>
 </div>
 <div id="pagination">
        <?php echo paginate_links(); ?>
    </div>
+   
    <div class="col-sm-4">
 <aside>
 
