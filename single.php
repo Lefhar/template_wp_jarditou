@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage jarditou
- * @since jarditou 1.0
+ * @since jarditou 2.0
  */
 
 get_header();

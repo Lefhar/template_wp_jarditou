@@ -6,7 +6,7 @@
  *
  * @package WordPress
  * @subpackage jarditou
- * @since jarditou 1.0
+ * @since jarditou 2.0
  */
 
 // This theme requires WordPress 5.3 or later.
@@ -76,13 +76,35 @@ function wpbootstrap_sidebar() {
 add_action('widgets_init', 'wpbootstrap_sidebar');
 
 
-add_filter('wp_nav_menu_items', 'add_search_form', 10, 2);
+
 function add_search_form($items, $args) {
 if( $args->theme_location == 'MENU-NAME' )
-        $items .= '<li class="search"><form role="search" method="get" id="searchform" action="'.home_url( '/' ).'">
-        <input type="text" value="search" name="s" id="s" /><input type="submit" id="searchsubmit" value="'. esc_attr__('Search') .'" /></form></li>';
-        return $items;
+        $items .= '<form class="form-inline ml-auto" action="'.home_url( '/' ).'" role="search" method="get" id="searchform">
+        <div class="md-form my-0">
+          <input class="form-control" type="text" placeholder="entrer votre recherche" aria-label="Search" name="s" id="s">
+        </div>
+        
+        <button class="btn btn-outline-success btn-md my-0 ml-sm-2" type="submit">'. esc_attr__('Search') .'</button>
+      </form>';
+        return $items; 
 }
+add_filter('wp_nav_menu_items', 'add_search_form', 10, 2);
+
+
+function add_search_form_page($form) {
+ 
+            $items = '<form class="form-inline ml-auto" action="'.home_url( '/' ).'" role="search" method="get" id="searchform">
+            <div class="col-10 pr-0">
+              <input class="form-control w-100" type="text" placeholder="entrer votre recherche" aria-label="Search" name="s" id="s" value="' . get_search_query() . '">
+            </div>
+            <div class="col-2 pl-1">
+            <button class="btn btn-outline-success btn-md " type="submit">'. esc_attr__('Search') .'</button>
+            </div>
+            </form>';
+            return $items; 
+    }
+    add_filter('get_search_form', 'add_search_form_page');
+
 
 function jarditou_custom_logo_setup() 
 {

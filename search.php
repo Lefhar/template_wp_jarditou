@@ -1,57 +1,52 @@
 <?php
 /**
- *  jarditou: Search Page
+ * page single du template jarditou.
  *
  * @package WordPress
  * @subpackage jarditou
- * @since jarditou 1.0
+ * @since jarditou 2.0
  */
 
 get_header();
 ?>
-    <div class="container-fluid p-4 mb-4">
 
-   
+<div class="container-fluid">
 <div class="row">
-<!-- 
-    colonne central
--->
+<div class="col-sm-8 col-12"> 
 <h1>Résultat de recherche : <?php echo get_search_query(); ?></h1>
-<div class="wrap">
-    <div id="primary" class="content-area">
-        <main id="main" class="site-main" role="main">
+
         <?php get_search_form(); ?>
-        </main><!-- #main -->
-    </div><!-- #primary -->
-</div><!-- .wrap -->
 <?php if(have_posts()) : ?>
-  
-  <?php while(have_posts()) : the_post(); ?>
-  
-  <article>
-  <div class="col-sm-12 col-12 "> 
-     <h1><?php the_title(); ?></h1>
-     <p><stron>Publié le :</strong><?php the_time('d/m/Y'); ?><?php if(!is_page()) : ?> dans <?php the_category(', '); ?><?php endif; ?></p>
-     <?php if(is_singular()) : ?>
-                   <?php the_content(); ?>
-               <?php else : ?>
-                   <?php the_excerpt(); ?>
-                   <a href="<?php the_permalink(); ?>">Lire la suite</a>
-                   <hr>
-               <?php endif; ?>
-</div>
+    <?php while(have_posts()) : the_post(); ?>
+    <div class="col-12"> 
+            <h2 ><?php the_title(); ?></h2>
+            <p><strong>Publié le : </strong><?php the_time('l j F Y'); ?><?php if(!is_page()) : ?> dans <?php the_category(', '); ?><?php endif; ?></p>
+            <?php the_excerpt(); ?>
+            
+                <p><a href="<?php the_permalink(); ?>" class="btn btn-primary">Lire la suite</a></p>
 
-</article>
-
-<?php endwhile; ?>
-
-<div id="pagination">
+     
+        </div>
+    <?php endwhile; ?>
+    <hr>
+    <div id="pagination">
        <?php echo paginate_links(); ?>
    </div>
-<?php else : ?>
-   <p>Aucun résultat</p>
+   
 <?php endif; ?>
+
+
+</div>
+<div class="col-sm-4">
+<aside>
+
+            <?php dynamic_sidebar('main-sidebar'); ?>
+        
+        </aside>
+        </div>
 </div>
 </div>
 <?php
 get_footer();
+
+

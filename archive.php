@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage jarditou
- * @since jarditou 1.0
+ * @since jarditou 2.0
  */ 
 get_header();
 ?>
@@ -24,6 +24,7 @@ get_header();
      
         </div>
     <?php endwhile; ?>
+    <hr>
     <div id="pagination">
        <?php echo paginate_links(); ?>
    </div>
