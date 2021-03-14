@@ -83,3 +83,34 @@ if( $args->theme_location == 'MENU-NAME' )
         <input type="text" value="search" name="s" id="s" /><input type="submit" id="searchsubmit" value="'. esc_attr__('Search') .'" /></form></li>';
         return $items;
 }
+
+function jarditou_custom_logo_setup() 
+{
+   $aParams = array(
+    'width'                  => 300,
+    'height'                 => 90,
+    'default-image' => get_template_directory_uri() . '/assets/src/img/jarditou_logo.jpg',
+      'header-text' => array( 'site-title', 'site-description' ),
+   );
+
+   // Ajout du support 
+   add_theme_support('custom-logo', $aParams );
+
+}
+
+add_action( 'after_setup_theme', 'jarditou_custom_logo_setup' );
+
+function jarditou_custom_ban_setup() 
+{
+   $aParams = array(
+    'width'                  => 1110,
+    'height'                 => 214,
+    'default-image' => get_template_directory_uri() . '/assets/src/img/promotion.jpg',
+      'header-text' => array( 'site-title', 'site-description' ),
+   );
+
+   // Ajout du support 
+   add_theme_support('custom-header', $aParams );
+}
+
+add_action( 'after_setup_theme', 'jarditou_custom_ban_setup' );

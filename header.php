@@ -27,9 +27,19 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col 12 col-lg-2 pt-2">
-         
-                <img src="<?php bloginfo( 'template_directory' ); ?>/assets/src/img/jarditou_logo.jpg"  class="img-fluid" alt="Jarditou" title="Jarditou">   
-              </div>
+             <?php   
+             $custom_logo_id = get_theme_mod('custom_logo');
+$aLogo = wp_get_attachment_image_src($custom_logo_id , 'medium');
+if (has_custom_logo()) 
+{ // Si un logo a été défini
+    echo '<img src="'.esc_url($aLogo[0]).'" alt="'.get_bloginfo('name').'" class="img-fluid">';
+} 
+else 
+{   // Sinon on affiche le nom du site
+    echo '<h1>'.get_bloginfo('name').'</h1>';
+}
+?>
+             </div>
             
               <div class="col 12 col-lg-10 pt-2">
                 <div class="text-right h1"><?php echo get_bloginfo('description');?></div>
@@ -82,5 +92,5 @@
         </div>
     </nav>
     <?php endif; ?>
-    <div class="container-fluid"><div class="row"><img src="<?php bloginfo( 'template_directory' ); ?>/assets/src/img/promotion.jpg" class="w-100" alt="Jarditou" title="Jarditou"></div></div>
+    <div class="container-fluid"><div class="row"><img src="<?php header_image(); ?>" class="w-100" alt="<?=get_bloginfo('name');?>" title="<?=get_bloginfo('name');?>"></div></div>
     </header> 
