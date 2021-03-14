@@ -16,7 +16,8 @@ get_header();
   <article>
 
      <h1><?php the_title(); ?></h1>
-     <p><strong>Publié le :</strong><?php the_time('d/m/Y'); ?><?php if(!is_page()) : ?> dans <?php the_category(', '); ?><?php endif; ?></p>
+     <p><strong>Publié le : </strong><?php the_time('l j F Y'); ?><?php if(!is_page()) : ?> dans <?php the_category(', '); ?><?php endif; ?></p>
+
      
                    <?php the_content(); ?>
          

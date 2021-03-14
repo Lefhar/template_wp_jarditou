@@ -2,7 +2,15 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo('charset'); ?>">
-<title><?php echo get_bloginfo('title');?></title>
+<title><?php if ( is_404() ) : ?>
+    <?php _e('Not Found'); ?>
+<?php elseif ( is_home() || is_front_page() ) : ?>
+   <?php bloginfo('description'); ?>
+<?php elseif ( is_category() ) : ?>
+    <?php single_cat_title(); ?>
+<?php else : ?>
+    <?php wp_title(); ?>
+<?php endif; ?></title>
 <meta name="description" content="<?php if(is_singular()) : 
        echo strip_tags(get_the_excerpt());
     
