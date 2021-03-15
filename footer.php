@@ -5,7 +5,7 @@
     <p>Thème <a href="https://github.com/Lefhar/template_wp_jarditou">Jarditou Bootstrap</a> pour WordPress par <a href="https://lefebvreharold.fr">lefebvreharold.fr</a>.</p>
     </div>
         <div class="col-sm-4 col-12"> 
-        <a href="#" class="up">Retour en haut</a>
+        <a href="#" class="btn btn-light up"><span class="fa fa-chevron-up"></span></a>
         </div>
     </div>
     </footer>
